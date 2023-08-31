@@ -7,8 +7,8 @@ from langchain.llms import HuggingFacePipeline, LlamaCpp,CTransformers
 from langchain.chains import RetrievalQA
 import chainlit as cl
 from langchain.vectorstores import Chroma
-from langchain.callbacks.manager import CallbackManager
-from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+# from langchain.callbacks.manager import CallbackManager
+# from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 import torch
 import time
 from huggingface_hub import hf_hub_download
@@ -86,7 +86,7 @@ def load_llm():
     model_basename="llama-2-7b-chat.ggmlv3.q4_0.bin"
     max_ctx_size = 2048
     n_gpu_layers = 50
-    n_batch = 200
+    n_batch = 150
     model_path = hf_hub_download(repo_id=model_id, filename=model_basename)
 
     llm = LlamaCpp(
@@ -101,6 +101,7 @@ def load_llm():
     top_k=50,
     verbose=True)
     return llm
+llm = load_llm()
 
 #QA Model Function
 def qa_bot():
@@ -113,7 +114,6 @@ def qa_bot():
         embedding_function=embeddings,
         client_settings=CHROMA_SETTINGS,
     )
-    llm = load_llm()
     qa_prompt = set_custom_prompt()
     qa = retrieval_qa_chain(llm, qa_prompt, db)
 
