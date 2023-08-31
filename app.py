@@ -85,15 +85,15 @@ def load_llm():
     model_id='TheBloke/Llama-2-7B-Chat-GGML'
     model_basename="llama-2-7b-chat.ggmlv3.q4_0.bin"
     max_ctx_size = 2048
-    n_gpu_layers = 70
-    n_batch = 500
+    n_gpu_layers = 90
+    n_batch = 1000
     model_path = hf_hub_download(repo_id=model_id, filename=model_basename)
 
     llm = LlamaCpp(
     model_path=model_path,
     max_tokens=max_ctx_size,
     n_ctx=max_ctx_size,
-    temperature = 0.01,
+    temperature = 0.1,
     n_gpu_layers=n_gpu_layers,
     n_batch=n_batch,
     top_p=0.95,
