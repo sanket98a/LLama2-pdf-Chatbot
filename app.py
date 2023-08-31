@@ -17,6 +17,10 @@ from constant import (
     EMBEDDING_MODEL_NAME,
     PERSIST_DIRECTORY,  
 )
+import gc
+torch.cuda.empty_cache()
+gc.collect()
+
 if torch.cuda.is_available():
     device = "cuda:0"
 else:
