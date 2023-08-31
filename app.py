@@ -86,7 +86,7 @@ def load_llm():
     model_basename="llama-2-7b-chat.ggmlv3.q4_0.bin"
     max_ctx_size = 2048
     n_gpu_layers = 70
-    n_batch = 800
+    n_batch = 600
     model_path = hf_hub_download(repo_id=model_id, filename=model_basename)
 
     llm = LlamaCpp(
