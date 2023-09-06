@@ -42,7 +42,7 @@ def get_prompt(instruction, new_system_prompt ):
 
 # PROMPT-2 ----------------------------------------------------------------------------------------------------
 system_prompt = "Use the following pieces of context about affine leave policy to answer the question at the end. If the answer cannot be found, respond with 'The answer is not available in the given data'.\n"
-instruction = """use this context to answer the user question:{context} \n user_question: {question} answer:"""
+instruction = """use this context to answer the user question:{context} \n user_question: {question}. ##Instructions: Please return reponse from provided context only, do not add extra text or share false information.Do not calculate any calculation by you provide the answer based from user provided context only."""
 prompt_template=get_prompt(instruction,system_prompt)
 print(prompt_template)
 
