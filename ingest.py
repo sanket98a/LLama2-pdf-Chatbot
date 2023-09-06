@@ -16,7 +16,7 @@ if torch.cuda.is_available():
 else:
     device = "cpu"
 
-device = torch.device(device)
+# device = torch.device(device)
 # Create vector database
 def create_vector_db():
     # load the data
